@@ -7,50 +7,37 @@ def main():
 
 
 def is_valid(s):
-    if char_length(s) and starts_with_two_letters(s):
+    if char_len(s) and starter(s) and onlyAlphaNum(s) and charOrder(s):
         return True
+    else:
+        return False
 
-def char_length(s):
+def char_len(str):     # “… vanity plates may contain a maximum of 6 characters (letters or numbers) and a minimum of 2 characters.”
     if 2 <= len(str) <= 6:
         return True
-    else:
-        return False
 
-def starts_with_two_letters(s):
-    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    x, y = list(s[:2])
-    if x in letters and y in letters:
+def starter(str): # “All vanity plates must start with at least two letters.”
+    if str[:2].isalpha():
         return True
-    else:
-        return False
-    
-def middle_verified(s):
-    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    numbers = "1234567890"
-    if len(s) > 2 and len(s) <= 6:
-        arr = list(s[2:])
-        loop_length = len(arr) - 1
-        # for n in numbers:
-        #     if 
+
+def onlyAlphaNum(str): # “No periods, spaces, or punctuation marks are allowed.”
+    for char in str:
+        if char.isalnum():
+            return True
+
+def charOrder(str): # “Numbers cannot be used in the middle of a plate; they must come at the end. "
+    has_num = False
+
+    for char in str:
+        if char.isdigit():
+            if char == 0:
+                return False
+            has_num = True
+                
+        elif has_num:
+            return False
+    return True
+
+main()
 
 
-
-
-        # count = 0
-        # is_true = True
-
-
-        # while count < loop_length:
-        #     if arr[count] in numbers and arr[loop_length] in letters:
-        #         is_true = False
-        #         print(is_true)
-        #     else:
-        #         is_true = True
-        #         print(is_true)
-        #     count +=1
-        
-
-
-middle_verified('AA22AA')
-
-# main()
