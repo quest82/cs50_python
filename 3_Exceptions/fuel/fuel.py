@@ -3,8 +3,10 @@ from math import floor
 def main():
     while True:
         fraction = input("Fraction on your fuel guage: ")
-        X, Y = fraction.split("/")
-
+        try:
+            X, Y = fraction.split("/")
+        except ValueError:
+            continue
         if X.isdigit() and Y.isdigit() and int(X) <= int(Y) and int(Y) > 0:
             fuel_percent = get_percent(X, Y)
             result = check_percent(fuel_percent)
