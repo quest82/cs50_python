@@ -13,7 +13,10 @@ felipe_taqueria = {
 def main():
     total = 0
     while True:
-        order = input("Type your order in: ")
+        try:
+            order = input("Type your order in: ")
+        except EOFError:
+            return
         total += felipe_taqueria[order.title()]
         print(f"Total:{total}")
 
