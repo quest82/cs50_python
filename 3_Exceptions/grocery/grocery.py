@@ -1,26 +1,21 @@
 grocery = {}
 
-
 def main():
-    arr = []
     while True:
         try:
-            items = input("Enter your item: ")
+            item = input("Enter your item: ")
         except EOFError:
             print()
             break
         else:
-            arr.append(items)
-    into_dict(arr)
+            into_dict(item)
     print(grocery)
 
 def into_dict(x):
-    print(x)
-    for item in x:
-        if item in grocery.keys():
-            grocery[item] += 1
+        if x in grocery.keys():
+            grocery[x] += 1
         else:
-            grocery[item] = 1
+            grocery[x] = 1
         
     
 
