@@ -1,6 +1,6 @@
 def main():
     while True:
-        date = input("Enter date (month/date/year: )")
+        date = input("Date: ")
         try:
             result = date_converter(date)
         except ValueError:
@@ -30,6 +30,10 @@ def date_converter(date):
 
         day_no = int(day)
         month_no = int(month)
+
+        if month_no > 12 or day_no > 31:
+            raise ValueError
+        
         for x in range(1, 10):
             if day_no == x:
                 day_no = f"0{day_no}"
@@ -49,7 +53,8 @@ def date_converter(date):
             if month.lower() == m.lower():
                 month_no = index + 1
                 month_check = True
-        if not month_check:
+                
+        if not month_check or day_no > 31:
             raise ValueError
 
         for x in range(1, 10):
