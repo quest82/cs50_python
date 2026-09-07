@@ -25,6 +25,7 @@ def date_converter(date):
     "December"
 ]
 
+    date = date.strip()
     if "/" in date:
         month, day, year = date.split('/')
 
@@ -53,7 +54,7 @@ def date_converter(date):
             if month.lower() == m.lower():
                 month_no = index + 1
                 month_check = True
-                
+
         if not month_check or day_no > 31:
             raise ValueError
 
