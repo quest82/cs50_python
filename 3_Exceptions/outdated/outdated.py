@@ -1,7 +1,13 @@
 def main():
-    date = input("Enter date (month/date/year: )")
-    result = date_converter(date)
-    print(result)
+    while True:
+        date = input("Enter date (month/date/year: )")
+        try:
+            result = date_converter(date)
+        except ValueError:
+            continue
+        else:
+            print(result)
+            break
 
 def date_converter(date):
     acceptable_months = [
@@ -51,7 +57,7 @@ def date_converter(date):
                 day_no = f"0{day_no}"
             if month_no == x:
                 month_no = f"0{month_no}"
-                
+
         return f"{year}-{month_no}-{day_no}"
         
         
